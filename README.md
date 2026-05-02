@@ -1,7 +1,7 @@
-# 🦊 Foxstrap
+#  Foxstrap(Beta)
 
 <p align="center">
-  <img src="путь_к_твоей_иконке.png" alt="Foxstrap Logo" width="128">
+  <img src="https://github.com/Ramos1488/Foxstrap/blob/main/Assets/fox.png" alt="Foxstrap Logo" width="128">
 </p>
 
 <p align="center">
@@ -29,7 +29,7 @@
 
 ## 🛠 Требования
 *   Windows 10 / 11 (x64)
-*   .NET 6.0 Desktop Runtime
+*   .NET 9.0 Desktop Runtime
 
 ---
 
