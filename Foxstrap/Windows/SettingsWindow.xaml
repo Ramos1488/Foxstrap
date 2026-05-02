@@ -1,0 +1,91 @@
+﻿<Window x:Class="Foxstrap.Windows.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Настройки Foxstrap" Height="520" Width="720"
+        WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Border Background="#1E1E2E" CornerRadius="10"
+            BorderBrush="#313244" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="48"/>
+            </Grid.RowDefinitions>
+
+            <!-- Titlebar -->
+            <Grid Grid.Row="0" MouseLeftButtonDown="Titlebar_MouseLeftButtonDown">
+                <TextBlock Text="Настройки Foxstrap" FontSize="12"
+                           Foreground="#6C7086" VerticalAlignment="Center" Margin="14,0"/>
+                <Button Content="✕" Width="36" Height="36" HorizontalAlignment="Right"
+                        Background="Transparent" Foreground="#6C7086"
+                        BorderBrush="Transparent" Click="CloseButton_Click" Cursor="Hand"/>
+            </Grid>
+
+            <!-- Контент -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Боковое меню -->
+                <StackPanel Grid.Column="0" Margin="8,8,8,0">
+                    <Button x:Name="BtnIntegrations" Content="  Интеграции"
+                            Style="{StaticResource NavButton}"
+                            Click="NavButton_Click" Tag="Integrations"/>
+                    <Button x:Name="BtnLauncher" Content="  Лаунчер"
+                            Style="{StaticResource NavButton}"
+                            Click="NavButton_Click" Tag="Launcher"/>
+                    <Button x:Name="BtnMods" Content="  Модификации"
+                            Style="{StaticResource NavButton}"
+                            Click="NavButton_Click" Tag="Mods"/>
+                    <Button x:Name="BtnFastFlags" Content="  Настройки движка"
+                            Style="{StaticResource NavButton}"
+                            Click="NavButton_Click" Tag="FastFlags"/>
+                    <Button x:Name="BtnAppearance" Content="  Внешний вид"
+                            Style="{StaticResource NavButton}"
+                            Click="NavButton_Click" Tag="Appearance"/>
+                    <Separator Background="#313244" Margin="8,8"/>
+                    <Button x:Name="BtnAbout" Content="  О Foxstrap"
+                            Style="{StaticResource NavButton}"
+                            Click="NavButton_Click" Tag="About"/>
+                </StackPanel>
+
+                <Rectangle Grid.Column="1" Fill="#313244"/>
+
+                <!-- Правая панель -->
+                <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="ContentPanel" Margin="24,16"/>
+                </ScrollViewer>
+            </Grid>
+
+            <!-- Нижняя панель -->
+            <Grid Grid.Row="2" Background="#181825">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Margin="8,0">
+                    <CheckBox x:Name="TestModeCheck" Content="Режим тестирования"
+                              Foreground="#6C7086" FontSize="12"
+                              VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal"
+                            Margin="0,0,12,0">
+                    <Button Content="Сохранить" Click="SaveButton_Click"
+                            Padding="16,8" Margin="0,0,8,0"
+                            Background="#CBA6F7" Foreground="#1E1E2E"
+                            BorderBrush="Transparent" FontWeight="SemiBold"
+                            Cursor="Hand"/>
+                    <Button Content="Закрыть" Click="CloseButton_Click"
+                            Padding="16,8" Background="#313244"
+                            Foreground="#CDD6F4" BorderBrush="#45475A"
+                            Cursor="Hand"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
