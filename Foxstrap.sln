@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foxstrap", "Foxstrap\Foxstrap.csproj", "{13003444-713D-4B1D-5D18-9612A083E2AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13003444-713D-4B1D-5D18-9612A083E2AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13003444-713D-4B1D-5D18-9612A083E2AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13003444-713D-4B1D-5D18-9612A083E2AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13003444-713D-4B1D-5D18-9612A083E2AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A0BD773-7991-41F1-AFDE-9B5278DFC3E7}
+	EndGlobalSection
+EndGlobal

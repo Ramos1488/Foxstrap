@@ -1,0 +1,54 @@
+<Window x:Class="Foxstrap.Windows.CrashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Foxstrap — произошла ошибка"
+        Width="560" Height="380"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#1E1E2E">
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,12">
+            <TextBlock Text="Foxstrap завершился с ошибкой"
+                       FontSize="18" FontWeight="SemiBold"
+                       Foreground="#CDD6F4"/>
+            <TextBlock x:Name="SubtitleText"
+                       FontSize="13" Foreground="#A6ADC8"
+                       Margin="0,4,0,0" TextWrapping="Wrap"/>
+        </StackPanel>
+
+        <Separator Grid.Row="1" Background="#313244" Margin="0,0,0,12"/>
+
+        <Border Grid.Row="2" Background="#181825" CornerRadius="6"
+                Padding="12" Margin="0,0,0,16">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto">
+                <TextBlock x:Name="DetailsText"
+                           FontFamily="Consolas, Courier New"
+                           FontSize="12" Foreground="#A6ADC8"
+                           TextWrapping="Wrap"/>
+            </ScrollViewer>
+        </Border>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button x:Name="OpenLogsButton" Content="Открыть логи"
+                    Click="OpenLogsButton_Click"
+                    Margin="0,0,8,0" Padding="12,6"
+                    Background="#313244" Foreground="#CDD6F4"
+                    BorderBrush="#45475A" Cursor="Hand"/>
+            <Button x:Name="CloseButton" Content="Закрыть"
+                    Click="CloseButton_Click"
+                    Padding="12,6" Background="#F38BA8"
+                    Foreground="#1E1E2E" BorderBrush="Transparent"
+                    FontWeight="SemiBold" Cursor="Hand"/>
+        </StackPanel>
+    </Grid>
+</Window>
