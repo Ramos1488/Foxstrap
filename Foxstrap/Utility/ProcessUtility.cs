@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿﻿using System.Diagnostics;
 using System.Linq;
 
 namespace Foxstrap.Utility
@@ -23,3 +23,4 @@ namespace Foxstrap.Utility
         }
     }
 }
+

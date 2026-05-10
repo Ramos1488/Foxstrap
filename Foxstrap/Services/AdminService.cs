@@ -1,29 +1,14 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
+using Foxstrap.Enums;
+using Foxstrap.Models;
+
 namespace Foxstrap.Services
 {
-    public enum UserRole
-    {
-        Tester,
-        Moderator,
-        Admin,
-        SuperAdmin
-    }
-
-    public class FoxstrapUser
-    {
-        public string Username { get; set; } = "";
-        public string RobloxId { get; set; } = "";
-        public UserRole Role { get; set; } = UserRole.Tester;
-        public DateTime AddedAt { get; set; } = DateTime.Now;
-        public string AddedBy { get; set; } = "";
-        public bool IsActive { get; set; } = true;
-    }
-
-    public static class AdminService
+        public static class AdminService
     {
         private static List<FoxstrapUser> _users = new();
         private static readonly string _path = Path.Combine(
@@ -107,3 +92,6 @@ namespace Foxstrap.Services
         };
     }
 }
+
+
+

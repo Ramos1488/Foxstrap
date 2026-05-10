@@ -1,23 +1,13 @@
 ﻿using Foxstrap.Services;
-using System;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace Foxstrap.Windows
 {
     public partial class InstallerWindow : Window
     {
-        private int _currentPage = 0;
+        public InstallerWindow() => InitializeComponent();
 
-        public InstallerWindow()
-        {
-            InitializeComponent();
-            InstallPathText.Text = InstallerService.InstallPath;
-        }
-
-        private void Titlebar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Titlebar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
             => DragMove();
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -25,92 +15,39 @@ namespace Foxstrap.Windows
 
         private void Browse_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new System.Windows.Forms.FolderBrowserDialog
+            var dlg = new Microsoft.Win32.OpenFileDialog
             {
-                Description = "Выберите папку для установки Foxstrap",
-                SelectedPath = InstallerService.InstallPath
+                Title = "Select install folder",
+                Filter = "All files|*.*"
             };
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                InstallPathText.Text = dialog.SelectedPath;
+            dlg.ShowDialog();
         }
 
-        private void Reset_Click(object sender, RoutedEventArgs e)
-            => InstallPathText.Text = InstallerService.InstallPath;
+        private void Reset_Click(object sender, RoutedEventArgs e) { }
+        private void Back_Click(object sender, RoutedEventArgs e) { }
 
         private async void Next_Click(object sender, RoutedEventArgs e)
         {
-            if (_currentPage == 0)
+            try
             {
-                GoToPage(1);
-            }
-            else if (_currentPage == 1)
-            {
-                GoToPage(2);
-                NextButton.IsEnabled = false;
-                BackButton.IsEnabled = false;
-                await RunInstall();
-            }
-        }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            if (_currentPage > 0)
-                GoToPage(_currentPage - 1);
-        }
-
-        private void GoToPage(int page)
-        {
-            _currentPage = page;
-
-            PageWelcome.Visibility = page == 0 ? Visibility.Visible : Visibility.Collapsed;
-            PageInstall.Visibility = page == 1 ? Visibility.Visible : Visibility.Collapsed;
-            PageDone.Visibility = page == 2 ? Visibility.Visible : Visibility.Collapsed;
-
-            NavWelcome.Background = new SolidColorBrush(page == 0
-                ? Color.FromRgb(0x1E, 0x1E, 0x2E) : Colors.Transparent);
-            NavInstall.Background = new SolidColorBrush(page == 1
-                ? Color.FromRgb(0x1E, 0x1E, 0x2E) : Colors.Transparent);
-            NavDone.Background = new SolidColorBrush(page == 2
-                ? Color.FromRgb(0x1E, 0x1E, 0x2E) : Colors.Transparent);
-
-            BackButton.IsEnabled = page > 0;
-            NextButton.Content = page == 1 ? "Установить" : "Далее";
-        }
-
-        private async Task RunInstall()
-        {
-            var progress = new Progress<(int percent, string status)>(p =>
-            {
-                ProgressBar.Value = p.percent;
-                StatusLabel.Text = p.status;
-                PercentLabel.Text = $"{p.percent}%";
-            });
-
-            bool success = await InstallerService.InstallAsync(
-                progress,
-                DesktopShortcut.IsChecked == true,
-                StartMenuShortcut.IsChecked == true);
-
-            if (success)
-            {
-                StatusLabel.Text = "✓ Foxstrap успешно установлен!";
-                StatusLabel.Foreground = new SolidColorBrush(Color.FromRgb(0xA6, 0xE3, 0xA1));
-                NextButton.Content = "Запустить";
-                NextButton.IsEnabled = true;
-                NextButton.Click -= Next_Click;
-                NextButton.Click += (s, e) =>
+                var progress = new Progress<(int percent, string status)>(p =>
                 {
-                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(
-                        InstallerService.ExePath) { UseShellExecute = true });
-                    Application.Current.Shutdown();
-                };
+                    Dispatcher.Invoke(() =>
+                    {
+                        if (FindName("StatusText") is TextBlock tb) tb.Text = p.status;
+                        if (FindName("ProgressBar") is System.Windows.Controls.ProgressBar pb) pb.Value = p.percent;
+                    });
+                });
+                await RobloxInstaller.InstallFromSystemAsync(progress);
+                Application.Current.Shutdown();
             }
-            else
+            catch (Exception ex)
             {
-                StatusLabel.Text = "✗ Ошибка установки. Проверьте логи.";
-                StatusLabel.Foreground = new SolidColorBrush(Color.FromRgb(0xF3, 0x8B, 0xA8));
-                BackButton.IsEnabled = true;
+                MessageBox.Show($"Installation failed:\n{ex.Message}", "Foxstrap",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
 }
+
+

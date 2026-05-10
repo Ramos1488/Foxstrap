@@ -1,4 +1,4 @@
-﻿namespace Foxstrap.Models
+﻿﻿namespace Foxstrap.Models
 {
     public class LaunchSettings
     {
@@ -8,3 +8,4 @@
         public bool ApplyFastFlags { get; set; } = true;
     }
 }
+

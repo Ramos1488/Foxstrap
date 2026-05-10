@@ -1,4 +1,4 @@
-﻿using Foxstrap.Utility;
+﻿﻿using Foxstrap.Utility;
 
 namespace Foxstrap.AppData
 {
@@ -15,3 +15,4 @@ namespace Foxstrap.AppData
         public static string Roblox => PathUtility.RobloxVersions;
     }
 }
+

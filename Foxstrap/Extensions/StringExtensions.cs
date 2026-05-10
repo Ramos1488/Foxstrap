@@ -1,4 +1,4 @@
-﻿namespace Foxstrap.Extensions
+﻿﻿namespace Foxstrap.Extensions
 {
     public static class StringExtensions
     {
@@ -9,3 +9,4 @@
             string.IsNullOrEmpty(value) ? defaultValue : value!;
     }
 }
+

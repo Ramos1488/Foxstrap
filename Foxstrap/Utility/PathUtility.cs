@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.IO;
 
 namespace Foxstrap.Utility
@@ -20,3 +20,4 @@ namespace Foxstrap.Utility
         public static string FoxstrapAdmin => Path.Combine(FoxstrapAppData, "admin.json");
     }
 }
+

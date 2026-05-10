@@ -1,4 +1,4 @@
-﻿namespace Foxstrap.Enums
+﻿﻿namespace Foxstrap.Enums
 {
     public enum UserRole
     {
@@ -8,3 +8,4 @@
         SuperAdmin
     }
 }
+

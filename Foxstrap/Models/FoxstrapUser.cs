@@ -1,4 +1,4 @@
-﻿using Foxstrap.Enums;
+﻿﻿using Foxstrap.Enums;
 using System;
 
 namespace Foxstrap.Models
@@ -13,3 +13,4 @@ namespace Foxstrap.Models
         public bool IsActive { get; set; } = true;
     }
 }
+

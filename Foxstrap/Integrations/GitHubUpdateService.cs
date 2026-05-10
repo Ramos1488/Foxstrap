@@ -1,4 +1,4 @@
-﻿using Foxstrap.Services;
+﻿﻿using Foxstrap.Services;
 using System;
 using System.Net.Http;
 using System.Text.Json;
@@ -67,8 +67,10 @@ namespace Foxstrap.Integrations
             }
             catch (Exception ex)
             {
-                Logger.Error("Update download failed", ex);
+                Logger.Error("Update download failed" + " " + ex);
             }
         }
     }
 }
+
+

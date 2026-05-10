@@ -1,3 +1,4 @@
+﻿﻿using System;
 using System.Windows.Input;
 
 namespace Foxstrap.Commands
@@ -24,8 +25,6 @@ namespace Foxstrap.Commands
 
         public bool CanExecute(object? parameter) => _canExecute?.Invoke(parameter) ?? true;
         public void Execute(object? parameter) => _execute(parameter);
-
-        public void RaiseCanExecuteChanged() =>
-            CommandManager.InvalidateRequerySuggested();
     }
 }
+

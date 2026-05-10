@@ -1,0 +1,54 @@
+<Window x:Class="Foxstrap.Windows.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Foxstrap" Width="480" Height="260"
+        WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        ResizeMode="NoResize">
+
+    <Border Background="#1e1e2e" CornerRadius="12"
+            BorderBrush="#313244" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Контент -->
+            <StackPanel Grid.Row="0" VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Image Source="pack://application:,,,/Assets/foxstrap.png"
+                       Width="64" Height="64"
+                       RenderOptions.BitmapScalingMode="HighQuality"/>
+                <TextBlock Text="Foxstrap" FontSize="22" FontWeight="SemiBold"
+                           Foreground="#cdd6f4" HorizontalAlignment="Center"
+                           Margin="0,12,0,4"/>
+                <TextBlock x:Name="StatusText"
+                           Text="Подготовка..."
+                           FontSize="12"
+                           Foreground="#a6adc8"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,14"/>
+
+                <!-- Прогресс-бар -->
+                <Grid Width="340">
+                    <Border Background="#313244" CornerRadius="4" Height="6"/>
+                    <Border x:Name="ProgressBar" Background="#cba6f7"
+                            CornerRadius="4" Height="6"
+                            HorizontalAlignment="Left" Width="0"/>
+                </Grid>
+
+                <TextBlock x:Name="PercentText" Text=""
+                           FontSize="11" Foreground="#6c7086"
+                           HorizontalAlignment="Center" Margin="0,6,0,0"/>
+            </StackPanel>
+
+            <!-- Версия -->
+            <TextBlock Grid.Row="1" Text="v1.0.0 by Foxi005305"
+                       Foreground="#45475a" FontSize="10"
+                       HorizontalAlignment="Center" Margin="0,0,0,12"/>
+        </Grid>
+    </Border>
+</Window>

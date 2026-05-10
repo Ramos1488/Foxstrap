@@ -1,4 +1,4 @@
-﻿using System.Windows.Media;
+﻿﻿using System.Windows.Media;
 
 namespace Foxstrap.Extensions
 {
@@ -11,3 +11,6 @@ namespace Foxstrap.Extensions
             Color.FromArgb(alpha, color.R, color.G, color.B);
     }
 }
+
+
+

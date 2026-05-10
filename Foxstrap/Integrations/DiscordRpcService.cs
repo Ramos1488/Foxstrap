@@ -1,4 +1,4 @@
-﻿using Foxstrap.Services;
+﻿﻿using Foxstrap.Services;
 using System;
 
 namespace Foxstrap.Integrations
@@ -30,7 +30,7 @@ namespace Foxstrap.Integrations
             }
             catch (Exception ex)
             {
-                Logger.Error("Failed to start Discord RPC", ex);
+                Logger.Error("Failed to start Discord RPC" + " " + ex);
             }
         }
 
@@ -50,3 +50,5 @@ namespace Foxstrap.Integrations
         }
     }
 }
+
+

@@ -1,4 +1,7 @@
-using Foxstrap.Commands;
+﻿﻿using Foxstrap.Commands;
+using System;
+using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Foxstrap.Services;
 using System.Windows.Input;
 
@@ -6,7 +9,7 @@ namespace Foxstrap.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private string _status = "Готов";
+        private string _status = "Р“РѕС‚РѕРІ";
         private bool _isBusy = false;
 
         public string Status
@@ -42,19 +45,19 @@ namespace Foxstrap.ViewModels
             try
             {
                 IsBusy = true;
-                Status = "Запуск Roblox...";
+                Status = "Р—Р°РїСѓСЃРє Roblox...";
                 Logger.Info("Launching Roblox");
 
-                // TODO: твоя логика запуска
+                // TODO: С‚РІРѕСЏ Р»РѕРіРёРєР° Р·Р°РїСѓСЃРєР°
                 await Task.Delay(500);
 
-                Status = "Roblox запущен";
+                Status = "Roblox Р·Р°РїСѓС‰РµРЅ";
                 Logger.Info("Roblox launched successfully");
             }
             catch (Exception ex)
             {
-                Logger.Error("Failed to launch Roblox", ex);
-                Status = "Ошибка запуска";
+                Logger.Error("Failed to launch Roblox" + " " + ex);
+                Status = "РћС€РёР±РєР° Р·Р°РїСѓСЃРєР°";
             }
             finally
             {
@@ -63,3 +66,6 @@ namespace Foxstrap.ViewModels
         }
     }
 }
+
+
+

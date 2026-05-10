@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+﻿﻿using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -82,7 +82,7 @@ namespace Foxstrap.Services
             }
             catch (Exception ex)
             {
-                Logger.Error("Installation failed", ex);
+                Logger.Error("Installation failed" + " " + ex);
                 return false;
             }
         }
@@ -179,8 +179,10 @@ namespace Foxstrap.Services
             }
             catch (Exception ex)
             {
-                Logger.Error("Uninstall failed", ex);
+                Logger.Error("Uninstall failed" + " " + ex);
             }
         }
     }
 }
+
+

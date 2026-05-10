@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 
 namespace Foxstrap.Exceptions
 {
@@ -11,3 +11,4 @@ namespace Foxstrap.Exceptions
             : base(message) { }
     }
 }
+

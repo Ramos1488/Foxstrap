@@ -1,4 +1,4 @@
-﻿using Foxstrap.Services;
+﻿﻿using Foxstrap.Services;
 using System;
 using System.Net.Http;
 using System.Text.Json;
@@ -26,7 +26,7 @@ namespace Foxstrap.Integrations
             }
             catch (Exception ex)
             {
-                Logger.Error("Failed to get Roblox version", ex);
+                Logger.Error("Failed to get Roblox version" + " " + ex);
                 return null;
             }
         }
@@ -43,7 +43,7 @@ namespace Foxstrap.Integrations
             }
             catch (Exception ex)
             {
-                Logger.Error($"Failed to get Roblox user {userId}", ex);
+                Logger.Error($"Failed to get Roblox user {userId}" + " " + ex);
                 return null;
             }
         }
@@ -57,3 +57,5 @@ namespace Foxstrap.Integrations
         public string Description { get; set; } = "";
     }
 }
+
+
